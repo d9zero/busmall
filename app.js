@@ -1,5 +1,5 @@
 
-var parentElement = document.getElementById('lab-assets');
+var parentElement = document.getElementById('img');
 
 
 // function getRandomIamge(){
@@ -10,7 +10,7 @@ var parentElement = document.getElementById('lab-assets');
 var imageArray = [];
 
 function image(name, ext){
-  this.filepath = `../lab-assets/${name}.${ext}`;
+  this.filepath = `../img/${name}.${ext}`;
   this.alt = name;
   this.title = name;
   this.clicks = 0;
