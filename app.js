@@ -45,21 +45,21 @@ function getRandomImage(){
   var randomIndex = getRandomNumber(imageArray.length);
 // [1, 2, 4, 8, 9, 19]
 // randomIndex = 2
-  while(uniqueImageArray.includes(randomIndex)){
-    randomIndex = getRandomNumber(imageArray.length);
-  }
+  // while(uniqueImageArray.includes(randomIndex)){
+  //   randomIndex = getRandomNumber(imageArray.length);
+  // }
 // adds index tot he end of the array
-  uniqueImageArray.push(randomIndex);
+  // uniqueImageArray.push(randomIndex);
 
   // removes the oldest index from the array, that would be the first index.
-  if(uniqueImageArray > 6){
-    uniqueImageArray.shift();
-  }
+  // if(uniqueImageArray > 6){
+  //   uniqueImageArray.shift();
+  // }
 
   var chosenImage = imageArray[randomIndex];
   chosenImage.shown++;
   
-  buildElements(chosenImage);
+  // buildElements(chosenImage);
   
   var imageElement = document.createElement('img');
 
@@ -71,9 +71,9 @@ function getRandomImage(){
 }
 
 // Day 12 below
-var radiobutton = document.createElement('input');
-radioButtom.setAttribute('type', 'radio');
-radioButtom.setAttribute('vale', chosenImage.alt);
+// var radiobutton = document.createElement('input');
+// radioButtom.setAttribute('type', 'radio');
+// radioButtom.setAttribute('vale', chosenImage.alt);
 // Day 12 ^
 
 function getRandomNumber(max){
