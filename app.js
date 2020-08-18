@@ -9,7 +9,7 @@ var parentElement = document.getElementById('lab-assets');
 
 var imageArray = [];
 
-function image(name, alt, ext){
+function image(name, ext){
   this.filepath = `../lab-assets/${name}.${ext}`;
   this.alt = name;
   this.title = name;
@@ -25,7 +25,7 @@ new image("boots","jpg");
 new image("breakfast","jpg");
 new image("bubblegum","jpg");
 new image("chair","jpg");
-new image("chutlhu","jpg");
+new image("cthulhu","jpg");
 new image("dog-duck","jpg");
 new image("dragon","jpg");
 new image("pen","jpg");
@@ -49,6 +49,7 @@ function getRandomImage(){
   imageElement.setAttribute('alt', chosenImage.alt);
   imageElement.setAttribute('title', chosenImage.title);
   parentElement.appendChild(imageElement);
+  //  loop for 25 instances here.
 }
 
 function getRandomNumber(max){
@@ -62,6 +63,8 @@ function handleClick(){
   for (var i = 0; i>imageArray.length; i++){
     if(event.target.alt === imageArray[i].alt){
       imageArray[i].clicks++;
+      console.log(imageArray.clicks);
+      
     }
     
   }
@@ -83,7 +86,8 @@ function handleClick(){
   // clears html element for new image
 }
 
-
+//  this.click display
+// display to table, last part of salmon cookies
 
 
 
