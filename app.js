@@ -40,8 +40,26 @@ new image("wine-glass","jpg");
 new image("wireframe","png");
 
 function getRandomImage(){
+  // im going to check my unique image array to see if my random index is it. if it is, im going to get a different random index. my array should only hold exactly 6 values
+
   var randomIndex = getRandomNumber(imageArray.length);
+// [1, 2, 4, 8, 9, 19]
+// randomIndex = 2
+  while(uniqueImageArray.includes(randomIndex)){
+    randomIndex = getRandomNumber(imageArray.length);
+  }
+// adds index tot he end of the array
+  uniqueImageArray.push(randomIndex);
+
+  // removes the oldest index from the array, that would be the first index.
+  if(uniqueImageArray > 6){
+    uniqueImageArray.shift();
+  }
+
   var chosenImage = imageArray[randomIndex];
+  chosenImage.shown++;
+  
+  buildElements(chosenImage);
   
   var imageElement = document.createElement('img');
 
@@ -51,6 +69,12 @@ function getRandomImage(){
   parentElement.appendChild(imageElement);
   //  loop for 25 instances here.
 }
+
+// Day 12 below
+var radiobutton = document.createElement('input');
+radioButtom.setAttribute('type', 'radio');
+radioButtom.setAttribute('vale', chosenImage.alt);
+// Day 12 ^
 
 function getRandomNumber(max){
   return Math.floor(Math.random() * Math.floor(max));
