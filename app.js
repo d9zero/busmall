@@ -1,5 +1,5 @@
 
-var parentElement = document.getElementById('lab-assets');
+var parentElement = document.getElementById('img');
 
 
 // function getRandomIamge(){
