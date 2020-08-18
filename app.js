@@ -2,17 +2,17 @@
 var parentElement = document.getElementById('lab-assets');
 
 
-function getRandomIamge(){
-  var randomIndex = getRandomNumber(imageArray.length);
-  var chosenImage = imageArray [randomIndex];
-}
+// function getRandomIamge(){
+//   var randomIndex = getRandomNumber(imageArray.length);
+//   var chosenImage = imageArray [randomIndex];
+// }
 
 var imageArray = [];
 
-function image(filepath, alt, title){
+function image(name, alt, ext){
   this.filepath = `../lab-assets/${name}.${ext}`;
-  this.alt = alt;
-  this.title = title;
+  this.alt = name;
+  this.title = name;
   this.clicks = 0;
 
   imageArray.push(this);
@@ -39,46 +39,47 @@ new image("water-can","jpg");
 new image("wine-glass","jpg");
 new image("wireframe","png");
 
-function getRandomIamge(){
-var imageObject = new image('lab-assets/bag.jpg', 'bag');
+function getRandomImage(){
+  var randomIndex = getRandomNumber(imageArray.length);
+  var chosenImage = imageArray[randomIndex];
+  
+  var imageElement = document.createElement('img');
 
-var imageElement = document.createElement('img');
-
-imageElement.setAttribute('src', chosenImage.filepath);
-
-imageElement.setAttribute('alt', chosenImage.alt);
-
-imageElement.setAttribute('title', chosenImage.title);
-
-parentElement.appendChild(imageElement);
+  imageElement.setAttribute('src', chosenImage.filepath);
+  imageElement.setAttribute('alt', chosenImage.alt);
+  imageElement.setAttribute('title', chosenImage.title);
+  parentElement.appendChild(imageElement);
 }
 
 function getRandomNumber(max){
-  return Math.floor(Math.random() * Math.floor)
+  return Math.floor(Math.random() * Math.floor(max));
 }
-function handleClick(){
-  console.log('an image was clicked');
-  console.log("testing 1 2 3", event.target.alt)
-  var alt = event.target.alt;
 
-  for (var i = 25; i>imageArray.length; i++){
+function handleClick(){
+  console.log(`event.target is ${event.target.alt}`);
+  // var alt = event.target.alt;
+
+  for (var i = 0; i>imageArray.length; i++){
     if(event.target.alt === imageArray[i].alt){
       imageArray[i].clicks++;
     }
     
   }
 
+  console.log('user clicked');
+
   parentElement.innerHTML = '';
-  getRandomIamge();
-  getRandomIamge();
+  getRandomImage();
+  getRandomImage();
+  getRandomImage();
 
-  var alt = event.target.alt;
+  // var alt = event.target.alt;
 
-  for(var i=0; i<imageArray.length; i++){
-    if(alt === imageArray[i].alt){
-      imageArray[i].clicks++;
-    }
-  }
+  // for(var i=0; i<imageArray.length; i++){
+  //   if(alt === imageArray[i].alt){
+  //     imageArray[i].clicks++;
+  //   }
+  // }
   // clears html element for new image
 }
 
@@ -86,14 +87,15 @@ function handleClick(){
 
 
 
-parentElement.addEventListener('image', handleClick);
+parentElement.addEventListener('click', handleClick);
 
 getRandomImage();
 getRandomImage();
+getRandomImage();
 
-var pugbombButton = document.getElementById('pugbomb');
-pugbombButton.addEventListener('click', pugbombButtonHandler());
+// var pugbombButton = document.getElementById('pugbomb');
+// pugbombButton.addEventListener('click', pugbombButtonHandler());
 
-function pugbombButtonHandler() {
-  alert('PUGBOMB!!!!');
-}
+// function pugbombButtonHandler() {
+//   alert('PUGBOMB!!!!');
+// }
