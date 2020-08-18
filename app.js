@@ -1,6 +1,10 @@
 
 var parentElement = document.getElementById('img');
+var finalList = document.getElementById('ul');
 
+var totalClicks = 0;
+var maxClicks = 25;
+var uniqueImageArray = [];
 
 // function getRandomIamge(){
 //   var randomIndex = getRandomNumber(imageArray.length);
@@ -45,16 +49,16 @@ function getRandomImage(){
   var randomIndex = getRandomNumber(imageArray.length);
 // [1, 2, 4, 8, 9, 19]
 // randomIndex = 2
-  // while(uniqueImageArray.includes(randomIndex)){
-  //   randomIndex = getRandomNumber(imageArray.length);
-  // }
+  while(uniqueImageArray.includes(randomIndex)){
+    randomIndex = getRandomNumber(imageArray.length);
+  }
 // adds index tot he end of the array
-  // uniqueImageArray.push(randomIndex);
+  uniqueImageArray.push(randomIndex);
 
   // removes the oldest index from the array, that would be the first index.
-  // if(uniqueImageArray > 6){
-  //   uniqueImageArray.shift();
-  // }
+  if(uniqueImageArray > 6){
+    uniqueImageArray.shift();
+  }
 
   var chosenImage = imageArray[randomIndex];
   chosenImage.shown++;
@@ -82,7 +86,7 @@ function getRandomNumber(max){
 
 function handleClick(){
   console.log(`event.target is ${event.target.alt}`);
-  // var alt = event.target.alt;
+  var alt = event.target.alt;
 
   for (var i = 0; i>imageArray.length; i++){
     if(event.target.alt === imageArray[i].alt){
@@ -90,7 +94,9 @@ function handleClick(){
       console.log(imageArray.clicks);
       
     }
-    
+   
+    // if(clicks<5){}
+
   }
 
   console.log('user clicked');
@@ -100,6 +106,14 @@ function handleClick(){
   getRandomImage();
   getRandomImage();
 
+  if (totalClicks>=maxClicks) {
+    parentElement.removeEventListener('click', handleClick);
+    for (var j = 0; j < imageArray.length; j++){
+      var li = document.createElement('li');
+      li.textContent = imageArray[j].title + ' had ' + imageArray[j].clicks + ' votes and was shown ' + imageArray[j].shown + ' times.';
+      finalList.appendChild(li);
+    }
+  }
   // var alt = event.target.alt;
 
   // for(var i=0; i<imageArray.length; i++){
@@ -127,3 +141,47 @@ getRandomImage();
 // function pugbombButtonHandler() {
 //   alert('PUGBOMB!!!!');
 // }
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+
+// function getDeck(){
+//   var deck = new Array();
+//   for(var i = 0; i < suits.length;i++){
+//     var card = {Value: 
