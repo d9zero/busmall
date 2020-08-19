@@ -95,7 +95,7 @@ function handleClick(){
       
     }
    
-    // if(clicks<5){}
+    // if(clicks<5){}.
 
   }
 
