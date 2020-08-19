@@ -106,6 +106,7 @@ function handleClick(){
   getRandomImage();
   getRandomImage();
 
+
   if (totalClicks>=maxClicks) {
     parentElement.removeEventListener('click', handleClick);
     for (var j = 0; j < imageArray.length; j++){
@@ -114,6 +115,39 @@ function handleClick(){
       finalList.appendChild(li);
     }
   }
+
+
+  // To Add For Later
+  // function generateHeader() {
+  //   var tableRow = document.createElement('tr');
+  //   var blank = document.createElement('td');
+  //   tableRow.appendChild(blank);
+  //   for (var i = 0; i < clock.length; i++) {
+  //     var tableHead = document.createElement('th');
+  //     tableHead.textContent = clock[i];
+  //     tableRow.appendChild(tableHead);
+  //   }
+  //   var total = document.createElement('th');
+  //   total.textContent = 'Daily Location Total';
+  //   tableRow.appendChild(total);
+  //   parentElement.appendChild(tableRow);
+  // }
+  // generateHeader();
+  // Location.prototype.renderTableList = function () {
+  //   var tableRow = document.createElement('tr');
+  //   var storeName = document.createElement('td');
+  //   storeName.textContent = this.locationName;
+  //   tableRow.appendChild(storeName);
+  //   for (var i = 0; i < this.hourlyCookies.length; i++) {
+  //     var cookiesList = document.createElement('td');
+  //     cookiesList.textContent = this.hourlyCookies[i];
+  //     tableRow.appendChild(cookiesList);
+  //   }
+  //   var dailyTotal = document.createElement('td');
+  //   dailyTotal.textContent = this.cookieTotal;
+  //   tableRow.appendChild(dailyTotal);
+  //   parentElement.appendChild(tableRow);
+
   // var alt = event.target.alt;
 
   // for(var i=0; i<imageArray.length; i++){
